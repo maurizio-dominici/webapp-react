@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomeindexPage from "./pages/HomePage.jsx";
+import HomeIndexPage from "./pages/HomeIndexPage.jsx";
 import DefaultLayout from "./layouts/DefaultLayout";
 import ShowMoviePage from "./pages/ShowMoviePage.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
@@ -14,7 +14,7 @@ export default function App() {
           <Route element={<DefaultLayout />}>
             <Route index element={<AboutUs />} />
 
-            <Route path="/movies" element={<HomeindexPage />} />
+            <Route path="/movies" element={<HomeIndexPage />} />
             <Route path="/movies/:id" element={<ShowMoviePage />} />
           </Route>
         </Routes>

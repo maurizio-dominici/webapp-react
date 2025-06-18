@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-export default function MoviesList() {
+export default function MoviesList({ movie }) {
   return (
     <div className="container">
       <div className="row">
