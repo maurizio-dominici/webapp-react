@@ -1,10 +1,26 @@
 export default function ReviewsList({ reviews }) {
+  // funzione per le stelline con bootstrap icons
+  const renderStars = (vote) => {
+    const fullStars = Math.floor(vote);
+    const stars = [];
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= fullStars) {
+        stars.push(<i key={i} className="bi bi-star-fill text-warning"></i>);
+      } else {
+        stars.push(<i key={i} className="bi bi-star text-warning"></i>);
+      }
+    }
+
+    return stars;
+  };
+
   return (
     <div className="container">
       <div className="row">
         {reviews !== undefined &&
           reviews.map((review) => (
-            <div className="review">
+            <div key={review.id} className="review">
               <p>
                 <strong>user: </strong>
                 {review.name}
@@ -15,7 +31,7 @@ export default function ReviewsList({ reviews }) {
               </p>
               <p>
                 <strong>vote: </strong>
-                {review.vote}
+                {renderStars(review.vote)}
               </p>
               <br />
             </div>

@@ -2,6 +2,7 @@
 import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/index.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import * as bootsrtrap from "bootstrap";
 import App from "./App.jsx";
 

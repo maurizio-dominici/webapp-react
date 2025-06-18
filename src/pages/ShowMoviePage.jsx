@@ -19,43 +19,48 @@ export default function ShowMoviePage() {
 
   return (
     <>
-      <section>
+      {/* Movie Details */}
+      <section className="py-5 bg-light">
         <div className="container">
-          <h1>{movie.title}</h1>
-          <p>
-            <strong>descrizione: </strong>
-            {movie.abstract}
-          </p>
-          <p>
-            <strong>direct by: </strong>
-            {movie.director}
-          </p>
-          <p>
-            <strong>genre: </strong>
-            {movie.genre}
-          </p>
-          <p>
-            <strong>immagine:</strong>
-            <img
-              className="w-35"
-              src={`http://localhost:3000/images/`}
-              alt={movie.title}
-            />
-          </p>
+          <div className="row align-items-center g-4">
+            <div className="col-md-5">
+              {movie.image && (
+                <img
+                  src={movie.image}
+                  alt={movie.title}
+                  className="img-fluid rounded shadow-sm"
+                />
+              )}
+            </div>
+            <div className="col-md-7">
+              <h1 className="mb-3">{movie.title}</h1>
+              <p>
+                <strong>Descrizione:</strong> {movie.abstract}
+              </p>
+              <p>
+                <strong>Regista:</strong> {movie.director}
+              </p>
+              <p>
+                <strong>Genere:</strong> {movie.genre}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section>
+      {/* Reviews */}
+      <section className="py-5">
         <div className="container">
-          <h2>recensioni</h2>
+          <h2 className="mb-4">Recensioni</h2>
           <ReviewsList reviews={movie.reviews} />
         </div>
       </section>
 
-      <section>
+      {/* Submit Review Placeholder */}
+      <section className="py-5 bg-light">
         <div className="container">
-          <h2>la tua recensione</h2>
-          <p>form per le recenzioni</p>
+          <h2 className="mb-3">La tua recensione</h2>
+          <div className="alert alert-info">Form per le recensioni</div>
         </div>
       </section>
     </>
