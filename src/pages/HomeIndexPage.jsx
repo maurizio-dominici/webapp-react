@@ -4,19 +4,21 @@ import { useEffect, useState } from "react";
 
 const getUrlBe = import.meta.env.VITE_EXPRESS_BE;
 export default function HomeIndexPage() {
-  const [movies, setMovies] = useState([]);
+  const [getMovies, setGetMovies] = useState([]);
+
   useEffect(() => {
     axios.get(getUrlBe + "/movies").then((res) => {
-      console.log(res);
+      setGetMovies(res.data.movies);
     });
   }, []);
+
   return (
     <>
       <div className="container">
         <h1>movies</h1>
       </div>
 
-      <MoviesList />
+      <MoviesList movies={getMovies} />
     </>
   );
 }

@@ -1,22 +1,46 @@
 // IMPORTS
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import ReviewsList from "../components/ReviewsList";
 
 export default function ShowMoviePage() {
+  const [movie, setMovie] = useState({});
+  const getUrlBe = import.meta.env.VITE_EXPRESS_BE;
+
   const { id } = useParams();
+
+  useEffect(() => {
+    axios.get(getUrlBe + "/movies/" + id).then((res) => {
+      console.log(res.data.movie);
+      setMovie(res.data.movie);
+    });
+  }, []);
+
   return (
     <>
       <section>
         <div className="container">
-          <h1>movie {id}</h1>
+          <h1>{movie.title}</h1>
           <p>
-            <strong>descrizione</strong>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-            sint! Possimus repudiandae iste totam neque quas quae assumenda
-            aliquid aut unde optio itaque cumque similique, corporis
-            voluptatibus ipsa necessitatibus. Repellat?
+            <strong>descrizione: </strong>
+            {movie.abstract}
+          </p>
+          <p>
+            <strong>direct by: </strong>
+            {movie.director}
+          </p>
+          <p>
+            <strong>genre: </strong>
+            {movie.genre}
           </p>
           <p>
             <strong>immagine:</strong>
+            <img
+              className="w-35"
+              src={`http://localhost:3000/images/`}
+              alt={movie.title}
+            />
           </p>
         </div>
       </section>
@@ -24,7 +48,7 @@ export default function ShowMoviePage() {
       <section>
         <div className="container">
           <h2>recensioni</h2>
-          <p>lista delle recenzioni</p>
+          <ReviewsList reviews={movie.reviews} />
         </div>
       </section>
 
