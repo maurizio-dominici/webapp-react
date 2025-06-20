@@ -2,10 +2,10 @@ import Card from "./Card";
 
 export default function MoviesList({ movies }) {
   return (
-    <div className="container">
-      <div className="row">
+    <div className="container py-5">
+      <div className="row g-4">
         {movies.map((movie) => (
-          <div key={movie.id} className="col-4">
+          <div key={movie.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
             <Card
               title={movie.title}
               description={movie.description}

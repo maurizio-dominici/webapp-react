@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReviewsList from "../components/ReviewsList";
+import ReviewForm from "../components/ReviewForm";
 
 export default function ShowMoviePage() {
   const [movie, setMovie] = useState({});
@@ -60,7 +61,9 @@ export default function ShowMoviePage() {
       <section className="py-5 bg-light">
         <div className="container">
           <h2 className="mb-3">La tua recensione</h2>
-          <div className="alert alert-info">Form per le recensioni</div>
+          <div className="alert alert-info">
+            {<ReviewForm movieId={movie.id} />}
+          </div>
         </div>
       </section>
     </>
